@@ -1,3 +1,6 @@
+//import org.gradle.api.GradleException
+import java.util.Properties
+
 def localProperties = new Properties()
 def localPropertiesFile = rootProject.file('local.properties')
 if (localPropertiesFile.exists()) {
@@ -63,10 +66,17 @@ android {
     }
 }
 
+plugins {
+    id 'com.android.application'
+    id 'com.google.gms.google-services'
+}
+
 flutter {
     source '../..'
 }
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation platform('com.google.firebase:firebase-bom:32.2.2')
+    implementation 'com.google.firebase:firebase-analytics-ktx'
 }
